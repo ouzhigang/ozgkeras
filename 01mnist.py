@@ -21,8 +21,8 @@ if __name__ == "__main__":
 	y_test = to_categorical(y_test, num_classes)
 	
 	model = None
-	if os.path.exists("./mnist.h5"):
-		model = load_model("./mnist.h5")
+	if os.path.exists("./01mnist.h5"):
+		model = load_model("./01mnist.h5")
 	else:
 		model = Sequential()
 		model.add(Dense(10, input_shape = (784,), activation = 'softmax'))
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 		model.compile(optimizer = 'sgd', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 		model.fit(x_train, y_train, epochs = 8, batch_size = 128)
 
-		model.save('./mnist.h5')
+		model.save('./01mnist.h5')
 
 	#测试误差率、准确率
 	#res = model.evaluate(x_test, y_test)

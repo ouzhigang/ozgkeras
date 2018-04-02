@@ -20,8 +20,8 @@ if __name__ == "__main__":
 	y_test = to_categorical(y_test, 10)
 	
 	model = None
-	if os.path.exists("./cnn.h5"):
-		model = load_model("./cnn.h5")
+	if os.path.exists("./02cnn.h5"):
+		model = load_model("./02cnn.h5")
 	else:
 		model = Sequential()
 		model.add(Conv2D(32, kernel_size = (3, 3), activation = 'relu', input_shape = (28, 28, 1)))
@@ -36,7 +36,7 @@ if __name__ == "__main__":
 		model.compile(optimizer = 'adadelta', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 		model.fit(x_train, y_train, epochs = 8, batch_size = 128)
 	
-		model.save("./cnn.h5")
+		model.save("./02cnn.h5")
 	
 	#测试误差率、准确率
 	#res = model.evaluate(x_test, y_test)
